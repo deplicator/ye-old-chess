@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: pieceAddScreen.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: pieceAddScreen.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @file The class that adds a new piece in the customize screen.
+ * @author james
+ */
+
+/**
+  * PieceAddScreen class is the popup dialog box when clicking the New Piece
+  * button in the customize screen.
+  * @extends Phaser.Group
+  */
+class PieceAddScreen extends Phaser.Group {
+
+    /** Builds then dialog box but keeps it hidden until the New Piece button is clicked.
+     * @param {object} game   Reference to game object.
+     * @param {object} player Reference to player that opented this dialog box.
+     */
+    constructor(game, player) {
+        super(game, game.world);
+
+        // Player that created this.
+        this.player = player;
+
+        // The dialog box background.
+        this.background = this.game.add.sprite(0, 0, 'addPiece');
+
+        // A button for each base piece.
+        this.addPawn = this.game.add.button(210, 80, 'btn-addPawn', this.addPiece, this, 1, 0, 2);
+        this.addPawn.basePiece = 'pawn';
+
+        this.addKnight = this.game.add.button(210, 165, 'btn-addKnight', this.addPiece, this, 1, 0, 2);
+        this.addKnight.basePiece = 'knight';
+
+        this.addBishop = this.game.add.button(210, 250, 'btn-addBishop', this.addPiece, this, 1, 0, 2);
+        this.addBishop.basePiece = 'bishop';
+
+        this.addRook = this.game.add.button(210, 335, 'btn-addRook', this.addPiece, this, 1, 0, 2);
+        this.addRook.basePiece = 'rook';
+
+        this.addQueen = this.game.add.button(210, 420, 'btn-addQueen', this.addPiece, this, 1, 0, 2);
+        this.addQueen.basePiece = 'queen';
+
+        this.addKing = this.game.add.button(210, 505, 'btn-addKing', this.addPiece, this, 1, 0, 2);
+        this.addKing.basePiece = 'king';
+
+        // Add elements as children.
+        this.add(this.background);
+        this.add(this.addPawn);
+        this.add(this.addKnight);
+        this.add(this.addBishop);
+        this.add(this.addRook);
+        this.add(this.addQueen);
+        this.add(this.addKing);
+
+        // Only show when New Piece button is clicked.
+        this.hide();
+    }
+
+    /** Show this dialog box. */
+    show() {
+        this.setAll('visible', true);
+    }
+
+    /** Hide this dialog box. */
+    hide() {
+        this.setAll('visible', false);
+    }
+
+    /** Calls this player's add piece method, then hides this dialog box.
+     * @param {object} button The button that called this method is used to
+     *                        differentiate base piece being added to the team.
+     */
+    addPiece(button) {
+        this.player.addPieceToTeam(button.basePiece);
+        this.player.calculateTeamValue();
+        this.hide();
+    }
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Bishop.html">Bishop</a></li><li><a href="Board.html">Board</a></li><li><a href="King.html">King</a></li><li><a href="Knight.html">Knight</a></li><li><a href="Pawn.html">Pawn</a></li><li><a href="Piece.html">Piece</a></li><li><a href="PieceAddScreen.html">PieceAddScreen</a></li><li><a href="PieceDataScreen.html">PieceDataScreen</a></li><li><a href="Player.html">Player</a></li><li><a href="Queen.html">Queen</a></li><li><a href="Rook.html">Rook</a></li></ul><h3>Global</h3><ul><li><a href="global.html#BOARD_ORIGIN">BOARD_ORIGIN</a></li><li><a href="global.html#COLUMNS">COLUMNS</a></li><li><a href="global.html#customizeState">customizeState</a></li><li><a href="global.html#DARKSQUARECOLOR">DARKSQUARECOLOR</a></li><li><a href="global.html#DIAGONAL">DIAGONAL</a></li><li><a href="global.html#LIGHTSQUARECOLOR">LIGHTSQUARECOLOR</a></li><li><a href="global.html#loadState">loadState</a></li><li><a href="global.html#MOVESHIGHLIGHTCOLOR">MOVESHIGHLIGHTCOLOR</a></li><li><a href="global.html#ORTHOGONAL">ORTHOGONAL</a></li><li><a href="global.html#playState">playState</a></li><li><a href="global.html#ROWS">ROWS</a></li><li><a href="global.html#STDKNIGHT">STDKNIGHT</a></li><li><a href="global.html#TAKESHIGHLIGHTCOLOR">TAKESHIGHLIGHTCOLOR</a></li><li><a href="global.html#titleState">titleState</a></li><li><a href="global.html#waitJoke">waitJoke</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Mon Mar 19 2018 07:54:59 GMT-0500 (Central Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
