@@ -1,13 +1,6 @@
 Ye Olde chess
 =============
 
-### En passant
-
-In normal chess only the Pawn can take or be taken en passant. In Ye Olde Chess En Passant has been expanded to include
-
-
-
-
 Pawn
 - cheap
 - direction limited
@@ -31,8 +24,3 @@ Queen
 
 King
 - limited movement
-
-
-
-
-Welcome to the Ye Olde Chess highlight series. This is a brief overview of the game: Ye Olde Chess.
